@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>easyTabPages</title>
+    <link rel="stylesheet" href="./css/easytabpages.css">
+  </head>
+  <body style="background:#ddd">
+<center><h1>Easy Tab Pages ☺</h1></center>
+    <div class="tab-container"  style="position:relative;margin:0 auto;width:100%;max-width:600px">
+      <div class="button">
+        <ul>
+          <li class="active">HTML</li>
+          <li>JS</li>
+          <li>CSS</li>
+        </ul>
+      </div>
+      <div class="page">
+        <div class="item active">
+<xmp>
+    <div class="tab-container"  style="your size style">
+      <div class="button">
+        <ul>
+          <li class="active">page button1</li>
+          <li>page button2</li>
+          <li>page button3</li>
+          ...
+        </ul>
+      </div>
+      <div class="page">
+        <div class="item active">
+          page 1
+        </div>
+        <div class="item">
+          page 2
+        </div>
+        <div class="item">
+          page 3
+        </div>
+        ...
+      </div>
+    </div>
+</xmp>
+        </div>
+        <div class="item">
+<xmp>
+  // TAB PAGES JS
+  var tabpages = document.body.querySelectorAll(".tab-container");
+  tabpages.forEach(function(e){
+    var buttons = e.querySelectorAll(".button ul li");
+    var pages = e.querySelectorAll(".page .item");
+    buttons.forEach(function(b,i){
+      //bin.className = "";
+      b.addEventListener("click",function () {
+
+        buttons.forEach(function(bin){bin.className = "";});;
+        this.className = "active";
+
+        pages.forEach(function (pin,indis) {
+          pin.className = "item";
+        });
+        pages[i].className = "item active";
+      });
+    });
+  });
+</xmp>
+        </div>
+        <div class="item">
+<xmp>
+/* TAB PAGE STYLE */
+.tab-container{
+  position: relative;
+}
+.tab-container .button{
+  display: inline-block;
+  width: 100%;
+}
+.tab-container .button ul{
+  list-style: none;
+  display: inline-flex;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.tab-container .button ul li{
+  padding: 8px 0px;
+  width: -webkit-fill-available;
+  text-align: center;
+  background: #fff;
+  border-bottom: 4px solid #ddd;
+  -webkit-transition: border-bottom 1s; /* Safari */
+  transition: border-bottom 1s;
+}
+.tab-container .button ul li:hover{
+  cursor: pointer;
+}
+.tab-container .button ul li.active{
+  border-bottom: 4px solid #0000ff;
+}
+.tab-container .page{
+  background: #fff;
+}
+.tab-container .page .item{
+  width: calc(100% - 20px);
+  background: #fff;
+  position: absolute;
+  top: 38px;
+  padding: 10px;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -ms-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+  opacity: 0;
+}
+.tab-container .page .item.active{
+  width: calc(100% - 20px);
+  background: #fff;
+  position: relative;
+  top: 0px;
+  display: block;
+  opacity: 1;
+}
+
+</xmp>
+        </div>
+      </div>
+    </div>
+    <script src="./js/easytabpages.js" charset="utf-8"></script>
+  </body>
+</html>

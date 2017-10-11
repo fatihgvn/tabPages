@@ -1,0 +1,54 @@
+/* TAB PAGE STYLE */
+.tab-container{
+  position: relative;
+}
+.tab-container .button{
+  display: inline-block;
+  width: 100%;
+}
+.tab-container .button ul{
+  list-style: none;
+  display: inline-flex;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.tab-container .button ul li{
+  padding: 8px 0px;
+  width: -webkit-fill-available;
+  text-align: center;
+  background: #fff;
+  border-bottom: 4px solid #ddd;
+  -webkit-transition: border-bottom 1s; /* Safari */
+  transition: border-bottom 1s;
+}
+.tab-container .button ul li:hover{
+  cursor: pointer;
+}
+.tab-container .button ul li.active{
+  border-bottom: 4px solid #0000ff;
+}
+.tab-container .page{
+  background: #fff;
+}
+.tab-container .page .item{
+  width: calc(100% - 20px);
+  background: #fff;
+  position: absolute;
+  top: 38px;
+  padding: 10px;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -ms-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+  opacity: 0;
+}
+.tab-container .page .item.active{
+  width: calc(100% - 20px);
+  background: #fff;
+  position: relative;
+  top: 0px;
+  display: block;
+  opacity: 1;
+}
