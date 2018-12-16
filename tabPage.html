@@ -30,11 +30,12 @@
     
     var tp = new tabPage("#tabpage").defaultTab(1).getSource("tab1").run();
 
-    tp.addTab("Tab #3"); // add new panel
+    var tab3 = tp.addTab("Tab #3"); // add new panel
     tp.removeTab(2);
-    tp.addTab("Tab #4");
-    tp.setTabName("test",4);
-    tp.setTabContent("<h3>test</h3>",4);
+    var tab4 = tp.addTab("Tab #4");
+    
+    tp.setTabName("test",tab4);
+    tp.setTabContent("<h3>test</h3>",tab4);
 
     </script>
 </body>

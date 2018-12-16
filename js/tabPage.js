@@ -58,12 +58,13 @@ var tabPage = function(selector){
     this.addTab = function(mhtml, thtml){
         thtml = (typeof thtml !== 'undefined') ?  thtml : "create new tab #"+this.datas.menu.length;
         var nmenu = document.createElement("li"), ntab = document.createElement("div"); // create dom elements
+        var tpid = this.datas.menu.length;
         nmenu.innerHTML = mhtml; ntab.innerHTML = thtml; // insert html codes
-        nmenu.setAttribute("tp-id",this.datas.menu.length); // add tp-id value
+        nmenu.setAttribute("tp-id",tpid); // add tp-id value
         nmenu.addEventListener("click",function(){menuclickfunction(this,_this)}); // add new click event
         this.datas.tp.querySelector("ul").appendChild(nmenu); this.datas.tp.appendChild(ntab); // append dom childs
         this.datas.menu.push(nmenu); this.datas.tabs.push(ntab); // add object datas
-        return this.datas.menu.length; // return tab id
+        return tpid; // return tab id
     }
 
     this.removeTab = function(tpid){
@@ -72,6 +73,8 @@ var tabPage = function(selector){
     }
 
     this.setTabName = function(name,tpid){
+        console.log(this.datas.menu);
+        
         this.datas.menu[tpid].innerHTML = name;
     }
 
