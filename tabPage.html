@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tab Page</title>
+    <link rel="stylesheet" href="css/tabPage.css">
+</head>
+<body>
+    <div id="tabpage">
+        <ul>
+            <li>Tab #0</li>
+            <li>Tab #1</li>
+            <li>Tab #2</li>
+        </ul>
+        <div>
+            tab #0
+        </div>
+        <div>
+            tab #1
+        </div>
+        <div>
+            tab #2
+        </div>
+    </div>
+    <a href="?tab1=2">Go to Tab#2 on get param</a>
+    <script src="js/tabPage.js"></script>
+    <script>
+    
+    var tp = new tabPage("#tabpage").defaultTab(1).getSource("tab1").run();
+
+    </script>
+</body>
+</html>

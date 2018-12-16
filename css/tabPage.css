@@ -1,0 +1,6 @@
+#tabpage div{
+    display: none;
+}
+#tabpage div.active{
+    display: block;
+}
