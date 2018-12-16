@@ -8,7 +8,7 @@ var tabPage = function(selector){
         defaultTab: 0,
         getSource: "tab"
     };
-
+    var initComplate = false;
     var _this = this;
     this.datas.tp = document.querySelector(selector);
     this.datas.tp.querySelectorAll("ul li").forEach(function(el){
@@ -27,10 +27,11 @@ var tabPage = function(selector){
         _this.datas.tabs[tpid].classList.add("active");
     }
 
+    for(var i = 0; i<this.datas.tp.children.length;i++)
+        if (this.datas.tp.children[i].tagName == "DIV")
+            this.datas.tabs.push(this.datas.tp.children[i]);
+
     this.init = function(){
-        for(var i = 0; i<this.datas.tp.children.length;i++)
-            if (this.datas.tp.children[i].tagName == "DIV")
-                this.datas.tabs.push(this.datas.tp.children[i]);
         
         this.datas.menu.forEach(function(element,index){
             element.setAttribute("tp-id",index);
@@ -38,6 +39,13 @@ var tabPage = function(selector){
             element.addEventListener("click",function(){menuclickfunction(this,_this)});
                 
         });
+        var ci = parseInt(findGetParameter(this.datas.getSource));        
+        if(ci != null && ci != undefined && this.datas.menu[ci] != undefined && ci != NaN)
+            this.datas.menu[ci].click();
+        else
+            this.datas.menu[this.datas.defaultTab].click();
+            initComplate = true;
+        return this;
     }
 
     this.goIndex = function (index){
@@ -61,7 +69,7 @@ var tabPage = function(selector){
         var tpid = this.datas.menu.length;
         nmenu.innerHTML = mhtml; ntab.innerHTML = thtml; // insert html codes
         nmenu.setAttribute("tp-id",tpid); // add tp-id value
-        nmenu.addEventListener("click",function(){menuclickfunction(this,_this)}); // add new click event
+        if(initComplate) nmenu.addEventListener("click",function(){menuclickfunction(this,_this)}); // add new click event
         this.datas.tp.querySelector("ul").appendChild(nmenu); this.datas.tp.appendChild(ntab); // append dom childs
         this.datas.menu.push(nmenu); this.datas.tabs.push(ntab); // add object datas
         return tpid; // return tab id
@@ -70,27 +78,16 @@ var tabPage = function(selector){
     this.removeTab = function(tpid){
         this.datas.menu[tpid].remove();
         this.datas.tabs[tpid].remove();
+        return false;
     }
 
     this.setTabName = function(name,tpid){
-        console.log(this.datas.menu);
-        
         this.datas.menu[tpid].innerHTML = name;
+        return this;
     }
 
     this.setTabContent = function(html,tpid){
         this.datas.tabs[tpid].innerHTML = html;
-    }
-
-    this.run = function(){
-        this.init();
-        var ci = parseInt(findGetParameter(this.datas.getSource));
-        
-        if(ci != null && ci != undefined && this.datas.menu[ci] != undefined)
-            this.datas.menu[ci].click();
-        else
-            this.datas.menu[this.datas.defaultTab].click();
-
         return this;
     }
 
