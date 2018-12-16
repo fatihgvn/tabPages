@@ -6,7 +6,7 @@ tabPage.js için hazırlanmış dokumantasyon.
 jquery is easy to use short and small tabPage application
 Prepared for tabPage.js.
 
-# Fonsiton Listesi - Function List
+# Fonksiyon Listesi - Function List
 ## tabPage.js için - for tabPage.js
 
 Yeni Tab tanımlamak için;
