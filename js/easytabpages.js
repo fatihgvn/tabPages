@@ -7,7 +7,7 @@ tabpages.forEach(function(e){
     //bin.className = "";
     b.addEventListener("click",function () {
 
-      buttons.forEach(function(bin){bin.className = "";});;
+      buttons.forEach(function(bin){bin.className = "";});
       this.className = "active";
 
       pages.forEach(function (pin,indis) {

@@ -25,10 +25,16 @@
         </div>
     </div>
     <a href="?tab1=2">Go to Tab#2 on get param</a>
-    <script src="js/tabPage.js"></script>
+    <script src="js/tabPage.min.js"></script>
     <script>
     
     var tp = new tabPage("#tabpage").defaultTab(1).getSource("tab1").run();
+
+    tp.addTab("Tab #3"); // add new panel
+    tp.removeTab(2);
+    tp.addTab("Tab #4");
+    tp.setTabName("test",4);
+    tp.setTabContent("<h3>test</h3>",4);
 
     </script>
 </body>
